@@ -37,13 +37,13 @@ public class BankController {
 		return bankEntry;
 	}
 
-	@RequestMapping(value = "/branch", method = RequestMethod.GET)
-	BankDetailsDTO findByIfsc(@RequestParam("ifsc") String ifsc) {
+	@RequestMapping(value = "/branch/{ifsc}", method = RequestMethod.GET)
+	BankDetailsDTO findByIfsc(@PathVariable("ifsc") String ifsc) {
 		LOGGER.info("Finding bank branch with ifsc: {}", ifsc);
 		return branchService.findByIfsc(ifsc);
 	}
 
-	@RequestMapping(value = "/branchList", method = RequestMethod.GET)
+	@RequestMapping(value = "/branch", method = RequestMethod.GET)
 	BankDetailsDTO findByCityAndBankName(
 			@RequestParam("bankName") String bankName,
 			@RequestParam("city") String city) {
